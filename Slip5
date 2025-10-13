@@ -1,0 +1,30 @@
+slip 5
+Create one data frame with 5 subjects and marks of 10 students for each subject. Find arithmetic mean, geometric mean, and harmonic mean.
+
+import pandas as pd
+from scipy.stats import gmean, hmean
+
+# 1. Create DataFrame
+data = {
+    'Math':      [85, 78, 92, 88, 76, 90, 84, 79, 95, 87],
+    'Science':   [80, 75, 89, 85, 70, 92, 83, 77, 90, 86],
+    'English':   [78, 82, 88, 90, 74, 85, 81, 79, 91, 87],
+    'History':   [72, 74, 80, 78, 70, 82, 76, 75, 84, 79],
+    'Computer':  [90, 88, 95, 92, 85, 97, 91, 89, 96, 93]
+}
+
+df = pd.DataFrame(data)
+print("----- DataFrame (Marks of 10 Students in 5 Subjects) -----")
+print(df)
+
+# 2. Arithmetic Mean
+print("\n----- Arithmetic Mean -----")
+print(df.mean())
+
+# 3. Geometric Mean
+print("\n----- Geometric Mean -----")
+print(df.apply(gmean))
+
+# 4. Harmonic Mean
+print("\n----- Harmonic Mean -----")
+print(df.apply(hmean))
