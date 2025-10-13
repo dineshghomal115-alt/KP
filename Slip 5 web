@@ -1,0 +1,69 @@
+Write a PHP script for the following: Design a form to accept a string. a. Write a function to find the length of given string without using built in functions. b. Write a function to count the total number of vowels i.e.(a, e, i, o, u) from the string.
+
+c. Convert the given string to lower case and then to Title case.
+
+d. Pad the given string with "*" from left and right both the sides.
+
+e. Remove the leading white spaces from the given string.
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Operations</title>
+</head>
+<body>
+
+<form method="post">
+    Enter a string: <input type="text" name="str" required>
+    <input type="submit" name="submit" value="Submit">
+</form>
+
+<?php
+if(isset($_POST['submit'])) {
+    $str = $_POST['str'];
+
+    echo "<h2>Original String: $str</h2>";
+
+    // a) Find length without built-in function
+    function my_strlen($s) {
+        $count = 0;
+        while (isset($s[$count])) {
+            $count++;
+        }
+        return $count;
+    }
+    echo "a) Length of string: " . my_strlen($str) . "<br>";
+
+    // b) Count vowels
+    function count_vowels($s) {
+        $vowels = ['a','e','i','o','u','A','E','I','O','U'];
+        $count = 0;
+        for($i = 0; $i < strlen($s); $i++) {
+            if(in_array($s[$i], $vowels)) {
+                $count++;
+            }
+        }
+        return $count;
+    }
+    echo "b) Total vowels: " . count_vowels($str) . "<br>";
+
+    // c) Convert to lower case, then Title case
+    $lower = strtolower($str);
+    $title = ucwords($lower);
+    echo "c) Lower case: $lower <br>";
+    echo "   Title case: $title <br>";
+
+    // d) Pad the string with '*' on both sides
+    $padded = str_pad($str, strlen($str)+4, "*", STR_PAD_BOTH);
+    echo "d) Padded string: $padded <br>";
+
+    // e) Remove leading white spaces
+    $trimmed = ltrim($str);
+    echo "e) Leading spaces removed: '$trimmed' <br>";
+}
+?>
+
+</body>
+</html>
