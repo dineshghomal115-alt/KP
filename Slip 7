@@ -1,0 +1,89 @@
+Write a menu driven program to perform the following stack and queue related
+operations: [Hint: use Array_push(), Array_pop(), Array_shift(), Array_unshift() ]
+a) Insert an element in stack
+b) Delete an element from stack
+c) Display the contents of stack
+d) Insert an element in queue
+e) Delete an element from queue
+f) Display the contents of queue
+
+<?php
+$stack = array();
+$queue = array();
+
+while (true) {
+    echo "\n========= MENU =========\n";
+    echo "1. Insert element in STACK\n";
+    echo "2. Delete element from STACK\n";
+    echo "3. Display STACK\n";
+    echo "4. Insert element in QUEUE\n";
+    echo "5. Delete element from QUEUE\n";
+    echo "6. Display QUEUE\n";
+    echo "7. Exit\n";
+    echo "Enter your choice: ";
+    $choice = trim(fgets(STDIN));
+
+    switch ($choice) {
+        case 1:   // Insert in Stack (push)
+            echo "Enter element to push in STACK: ";
+            $ele = trim(fgets(STDIN));
+            array_push($stack, $ele);
+            echo "Element pushed in STACK.\n";
+            break;
+
+        case 2:   // Delete from Stack (pop)
+            if (!empty($stack)) {
+                $ele = array_pop($stack);
+                echo "Popped element from STACK: $ele\n";
+            } else {
+                echo "STACK is empty.\n";
+            }
+            break;
+
+        case 3:   // Display Stack
+            if (!empty($stack)) {
+                echo "STACK elements (Top to Bottom):\n";
+                for ($i = count($stack) - 1; $i >= 0; $i--) {
+                    echo $stack[$i] . "\n";
+                }
+            } else {
+                echo "STACK is empty.\n";
+            }
+            break;
+
+        case 4:   // Insert in Queue (enqueue)
+            echo "Enter element to insert in QUEUE: ";
+            $ele = trim(fgets(STDIN));
+            array_push($queue, $ele);
+            echo "Element inserted in QUEUE.\n";
+            break;
+
+        case 5:   // Delete from Queue (dequeue)
+            if (!empty($queue)) {
+                $ele = array_shift($queue);
+                echo "Deleted element from QUEUE: $ele\n";
+            } else {
+                echo "QUEUE is empty.\n";
+            }
+            break;
+
+        case 6:   // Display Queue
+            if (!empty($queue)) {
+                echo "QUEUE elements (Front to Rear):\n";
+                foreach ($queue as $q) {
+                    echo $q . "\n";
+                }
+            } else {
+                echo "QUEUE is empty.\n";
+            }
+            break;
+
+        case 7:
+            echo "Exiting program. Goodbye!\n";
+            exit;
+
+        default:
+            echo "Invalid choice! Please try again.\n";
+    }
+}
+?>
