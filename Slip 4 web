@@ -1,0 +1,91 @@
+Write a script to accept two integers (Use html formhaving2 textboxes). Write a PHP script to,
+
+a. Find mod of the two numbers. b. Find the power of first number raised to the second. c. Find the sum of first n numbers (considering first numbers n) d. Find the factorial of second number. (Write separate function for each of the above operations.)
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Integer Operations</title>
+</head>
+<body>
+
+<h2>Enter Two Integers</h2>
+<form method="post">
+    First Number: <input type="number" name="num1" required><br><br>
+    Second Number: <input type="number" name="num2" required><br><br>
+    <input type="submit" name="submit" value="Calculate">
+</form>
+
+<?php
+if(isset($_POST['submit'])) {
+    $num1 = intval($_POST['num1']);
+    $num2 = intval($_POST['num2']);
+
+    echo "<h3>Entered Numbers: $num1 and $num2</h3>";
+
+    // a) Modulus
+    function find_mod($a, $b) {
+        return $a % $b;
+    }
+    echo "a) Modulus ($num1 % $num2) = " . find_mod($num1, $num2) . "<br>";
+
+    // b) Power
+    function find_power($a, $b) {
+        return pow($a, $b);
+    }
+    echo "b) Power ($num1 ^ $num2) = " . find_power($num1, $num2) . "<br>";
+
+    // c) Sum of first n numbers (first number n)
+    function sum_first_n($n) {
+        $sum = 0;
+        for($i=1; $i<=$n; $i++) {
+            $sum += $i;
+        }
+        return $sum;
+    }
+    echo "c) Sum of first $num1 numbers = " . sum_first_n($num1) . "<br>";
+
+    // d) Factorial of second number
+    function factorial($n) {
+        if($n < 0) return "Undefined";
+        $fact = 1;
+        for($i=1; $i<=$n; $i++) {
+            $fact *= $i;
+        }
+        return $fact;
+    }
+    echo "d) Factorial of $num2 = " . factorial($num2) . "<br>";
+}
+?>
+
+</body>
+</html>
+
+
+Que.2.Download iris data set file. Read this csv file using read_csv () function. Take samples from entire dataset. Display maximum and minimum values of all numeric attributes
+
+
+import pandas as pd
+
+# 1. Read Iris dataset
+# Make sure iris.csv is downloaded and in the same folder
+iris = pd.read_csv("iris.csv")
+
+print("----- First 5 rows of the dataset -----")
+print(iris.head())
+
+# 2. Take a random sample (say 10 rows)
+sample_data = iris.sample(n=10, random_state=42)  # random_state for reproducibility
+print("\n----- Sampled 10 rows -----")
+print(sample_data)
+
+# 3. Display maximum and minimum values of all numeric attributes
+# Assuming numeric attributes are the first 4 columns in Iris dataset
+numeric_cols = iris.select_dtypes(include='number').columns
+
+print("\n----- Maximum values of numeric attributes -----")
+print(sample_data[numeric_cols].max())
+
+print("\n----- Minimum values of numeric attributes -----")
+print(sample_data[numeric_cols].min()).
