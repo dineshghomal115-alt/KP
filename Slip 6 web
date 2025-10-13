@@ -1,0 +1,112 @@
+Que.1.Create your array of 30 high temperatures, approximating the weather for a spring month, then find the average high temp, the five warmest high temps and the five coolest high temps. Display the result on the browser.
+
+Hint:
+
+a) Use array slice
+
+b) the HTML character entity for the degree sign is &deg;. Marks]
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spring Month Temperatures</title>
+</head>
+<body>
+    <h2>High Temperatures for a Spring Month</h2>
+
+<?php
+// 1. Array of 30 high temperatures (approximate for a spring month)
+$temps = [15, 16, 18, 20, 22, 21, 19, 17, 18, 20,
+          23, 24, 25, 22, 21, 20, 19, 18, 21, 23,
+          24, 25, 26, 27, 22, 21, 20, 19, 18, 17];
+
+// 2. Calculate average high temperature
+$average = array_sum($temps) / count($temps);
+echo "<p><b>Average High Temperature:</b> " . round($average, 2) . "&deg;C</p>";
+
+// 3. Find 5 warmest high temperatures
+$temps_sorted_desc = $temps; 
+rsort($temps_sorted_desc);  // Sort descending
+$warmest_5 = array_slice($temps_sorted_desc, 0, 5);
+echo "<p><b>5 Warmest High Temperatures:</b> ";
+foreach($warmest_5 as $t){
+    echo $t."&deg;C ";
+}
+echo "</p>";
+
+// 4. Find 5 coolest high temperatures
+$temps_sorted_asc = $temps;
+sort($temps_sorted_asc);    // Sort ascending
+$coolest_5 = array_slice($temps_sorted_asc, 0, 5);
+echo "<p><b>5 Coolest High Temperatures:</b> ";
+foreach($coolest_5 as $t){
+    echo $t."&deg;C ";
+}
+echo "</p>";
+?>
+
+
+
+
+Q. 2
+
+
+</body>
+</html>
+
+import pandas as pd
+
+from sklearn.impute import SimpleImputer
+
+from sklearn.preprocessing
+
+LabelEncoder, StandardScaler
+
+# --- Step 1: Create dataset --- 'Country': ['France', 'Spain', 'Germany',
+
+'Spain', 'Germany', 'France', 'Spain'
+
+'France', 'Germany', 'France'],
+
+'Age': [44, 27, 30, 38, 40, 35, None, 48, 50, 37],
+
+'Salary': [72000, 48000, 54000, 61000,
+
+None, 58000, 52000, 79000, 83000, 67000],
+
+'Purchased': ['No', 'Yes', 'No', 'No', 'Yes', 'Yes', 'No', 'Yes', 'No', 'Yes']
+
+df = pd.DataFrame(data)
+
+df.to_csv("Data.csv", index=False) # Save as Data.csv
+
+# --- Step 2: Handle missing values imputer = SimpleImputer(strategy= 'mean') df[['Age', 'Salary']] =
+
+imputer.fit_transform(df[['Age', "Salary']])
+
+# --- Step 3: Encode categorical data ---
+
+le_country = LabelEncoder()
+
+df['Country'] =
+
+le_country.fit_transform(df['Country'])
+
+le_purchase = LabelEncoder()
+
+df['Purchased'] =
+
+le_purchase.fit_transform(df['Purchased'])
+
+# --- Step 4: Feature scaling
+
+scaler = StandardScaler()
+
+df[['Age', 'Salary']] =
+
+scaler. fit_transform(df[['Age', 'Salary']])
+
+# --- Step 5: Show result - print(df)
+
+Ask
+
